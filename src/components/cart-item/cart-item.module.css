@@ -1,0 +1,48 @@
+.good_image {
+  width: calc(12vw + 20px);
+  height: calc(12vw + 50px);
+  display: block;
+  margin: 0 36px 0 0;
+}
+
+.count_button {
+  /* background-color: transparent; */
+  color: #000000;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  background-color: white;
+  width: 39px;
+  height: 38px;
+  border: 0;
+  cursor: pointer;
+}
+
+.count_button:hover {
+  background-color: rgb(224, 224, 224);
+  
+}
+
+.delete_item_button {
+
+  margin-left: 18px;
+  background: transparent;
+  cursor: pointer;
+  border: 0;
+
+}
+
+.delete_item_button:hover  svg {
+  background-color: rgb(235, 185, 47);
+}
+
+@media (max-width:394px) {
+  
+.delete_item_button {
+
+  margin-left: 7px;
+
+}
+}

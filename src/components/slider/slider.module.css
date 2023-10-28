@@ -1,0 +1,72 @@
+
+
+.wrapper {
+  max-height: 500px;
+  /* max-width: 1200px; */
+  position: relative;
+  /* outline: 1px solid red; */
+  border-radius: 0 0 30px 30px;
+}
+
+.slide_image {
+  display: block;
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  z-index:-1;
+}
+
+.slide_image[src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/51f67fd4-2442-4dfa-a6d9-545d263e91ab/invincible-3-womens-road-running-shoes-r2vJbh.png"]{
+  width: 70%;
+}
+.slide_container {
+  padding: 52px 52px 0 52px;
+}
+
+.title {
+  z-index:2;
+  max-width: 400px;
+  margin: 62px 0 12px;
+  color: #121212;
+  text-decoration: none;
+  font-family: "Space Grotesk";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: -0.6px
+}
+
+.description {
+  z-index:2;
+  max-width: 400px;
+
+  text-decoration: none;
+  margin: 0 0 12px;
+  color: #121212;
+  font-family: "Space Grotesk";
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: -0.4px;
+}
+
+.link{
+  z-index: 2;
+  background-color: #000000;
+  border: 0;
+  color: white;
+  font-family: Space Grotesk;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; 
+  letter-spacing: -0.4px;
+  width: 10%;
+  max-height: 52px;
+  border-radius: 30px;
+}
