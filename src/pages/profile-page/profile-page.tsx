@@ -1,9 +1,10 @@
-import styles from './profile.module.css'
+import styles from './profile-page.module.css'
 import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import ProfileForm from '../../components/profile-form/profile-form';
-import { fetchLogoutThunk } from '../../services/thunks/ActionCreators';
+import { fetchLogoutThunk } from '../../services/thunks/thunks';
 import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
+import { TailSpin } from 'react-loader-spinner';
 
 const ProfilePage = ():JSX.Element => {
 
@@ -20,22 +21,11 @@ const ProfilePage = ():JSX.Element => {
       <nav className={`${styles.navigation_section}`}>
         <ul className={`${styles.link_container}`}>
           <li className={``}>
-          {/* <Breadcrumbs /> */}
-
             <NavLink
               to="/profile"
               className={switchClassName}
             >
               Profile              
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className={switchClassName}
-              to="/profile/orders"
-              
-            >
-              Order History
             </NavLink>
           </li>
           <li>

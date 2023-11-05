@@ -6,25 +6,25 @@ import App from './components/app/app';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from "react-redux";
 import { setupStore} from './services/store';
-import { QueryClientProvider } from 'react-query';
-import { queryClient } from './services/thunks/ActionCreators';
 
 
 const store = setupStore()
-
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-
+if (!window.location.pathname.includes('/react-e-store')) {
+  window.history.replaceState(
+    '',
+    '',
+    '/react-e-store' + window.location.pathname
+  );
+};
 root.render(
-  <QueryClientProvider client={queryClient}>
-    <Router>
+    <Router basename='/react-e-store'>
      <React.StrictMode>
         <Provider store={store}>
          <App />
         </Provider>
      </React.StrictMode>
     </Router>
-  </QueryClientProvider>
-
 );
 
 reportWebVitals();

@@ -1,8 +1,13 @@
+.good_wrapper__horizontal {
+  width: auto;
+  gap: 0px;
+}
+
 .good_image {
   width: calc(12vw + 20px);
   height: calc(12vw + 50px);
   display: block;
-  margin: 0 36px 0 0;
+  margin: 0 30px 0 0;
 }
 
 .count_button {

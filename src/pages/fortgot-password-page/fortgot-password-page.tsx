@@ -1,16 +1,18 @@
 import React from 'react'
-import styles from '../login/login.module.css'
+import styles from '../login-page/login-page.module.css'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import useForm from '../../hooks/useForm';
 import Input from '../../ui/input/input';
 import { useNavigate } from 'react-router';
-import { fetchForgotPasswordThunk } from '../../services/thunks/ActionCreators';
+import { fetchForgotPasswordThunk } from '../../services/thunks/thunks';
 import { TailSpin } from "react-loader-spinner";
 import { Link } from 'react-router-dom';
 import { MdDone } from 'react-icons/md';
 import { ImCancelCircle } from 'react-icons/im';
+import { inputsForgotPasswordPage, loginPATH, registerPATH, resetPasswordPATH } from '../../utils/constants';
 
-function ForgotPasswordPage() {
+const ForgotPasswordPage = ():JSX.Element => {
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { forgotPasswordRequest, forgotPasswordRequestSuccess, forgotPasswordRequestFailed} = useAppSelector(store => store.userReducer);
@@ -18,29 +20,17 @@ function ForgotPasswordPage() {
     email: '',
   });
 
-  const inputsForgotPasswordPage = [
-    {
-      name:"email",
-      type:"email",
-      placeholder: "Email",
-      errorMessage:"Email shoud be valid",
-      label:"Email",
-      image: '../../images/icons/email_icon_grey_background_icon.png',
-      required: true,
-    },
-  ]
-
   const hadleSubmit = (e:React.FormEvent):void => {
     e.preventDefault();
-    dispatch(fetchForgotPasswordThunk(userData.email))
+    dispatch(fetchForgotPasswordThunk(userData.email));
   };
 
   React.useEffect(() => {
-    if(forgotPasswordRequestSuccess){
-      const timer = setTimeout(() => navigate('/reset-password', {replace: true}), 3000)
+    if (forgotPasswordRequestSuccess) {
+      const timer = setTimeout(() => navigate(resetPasswordPATH, { replace: true }), 3000);
     }
   
-  }, [forgotPasswordRequestSuccess])
+  }, [forgotPasswordRequestSuccess]);
 
   return (
     <div className={styles.wrapper}>
@@ -75,12 +65,12 @@ function ForgotPasswordPage() {
       </form>
       <ul className={`${styles.links_container}`}>
         <li className={`${styles.links_row}`}>
-          <Link to='/login' className={styles.link_description}> 
+          <Link to={loginPATH} className={styles.link_description}> 
             Log in
           </Link>
         </li>
         <li className={`${styles.links_row}`}>
-          <Link to='/register' className={styles.link_description}> 
+          <Link to={registerPATH} className={styles.link_description}> 
             Registration
           </Link>
         </li>

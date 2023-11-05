@@ -1,0 +1,15 @@
+.main_container {
+}
+
+.spinner svg  {
+  margin: 0 auto;
+  width: 100px;
+  height: 900px;
+}
+
+@media (max-width:900px) {
+  .spinner svg {
+    height: 300px;
+  }
+
+}

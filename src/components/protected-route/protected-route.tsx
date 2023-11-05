@@ -1,9 +1,9 @@
-import React, { useEffect, FC } from 'react'
+import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { setAuthChecked } from '../../services/slices/user-slice';
 import { checkUserAuth } from '../../utils/api';
-import { batch } from 'react-redux';
+import { loginPATH } from '../../utils/constants';
 
 type TProtectedRoute = {
   readonly onlyUnAuth: boolean;
@@ -11,34 +11,29 @@ type TProtectedRoute = {
 };
 
 const ProtectedRoute = ({ onlyUnAuth = false, component}:TProtectedRoute) => {
+
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const isAuthChecked = useAppSelector((store) => store.userReducer.isAuthChecked);
   const user = useAppSelector((store) => store.userReducer.userData);
-  const location = useLocation();
-  // const { from } = location.state || { from: { pathname: "/" } };
 
   React.useEffect(() => {
-    
       dispatch(setAuthChecked(false));
       dispatch(checkUserAuth());
- 
-  },[dispatch])
+  },[dispatch]);
 
   if(!isAuthChecked) {
     return null
   }
 
   if (onlyUnAuth && user) {
-    console.log(`Авторизован`)
     const { from } = location.state || { from: { pathname: "/" } };
-    
     return <Navigate to={from} />;
   }
 
   if (!onlyUnAuth && !user) {
-    console.log(`Не авторизован`)
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to={loginPATH} state={{ from: location }} />;
   }
 
   return component;

@@ -1,53 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from "@reduxjs/toolkit"
-
-// TODO
-// 1) Разобраться почему проблемы с типизацией (что-то не так с использованием enum и литера пола)
-
-// enum EShoesSize {
-//   A = '36',
-//   B = '37',
-//   C = '38',
-//   D = '39',
-//   E = '40',
-//   F = '41',
-//   G = '42',
-//   H = '43',
-//   I = '44',
-// }
-
-// enum ETypeShoes {
-//   Lifestyle = 'lifestyle',
-//   Running = 'running',
-//   Football = 'football',
-//   Basketball = 'basketball'
-// }
-
-export type TGoods = {
-  id: string;
-  name: string;
-  sex: string;
-  sizes: any;
-  price: number;
-  type: any;
-  description: string;
-  colors: any;
-  photos: any;
-}
+import { TGood } from '../../types/types';
 
 
 type TIntitialStateGoods<T> = {
   goods: Array<T> | [];
   isLoading: boolean;
   error: string | null;
-  currentGood: any;
+  currentGood: T | any;
 }
 
-const intitialState: TIntitialStateGoods<TGoods> = {
+const intitialState: TIntitialStateGoods<TGood> = {
   goods: [],
   isLoading: false,
   error: null,
-  currentGood: null
+  currentGood: null,
 }
 
 export const goodsSlice = createSlice({
@@ -57,23 +24,23 @@ export const goodsSlice = createSlice({
     getGoodsRequestSent(state) {
       state.isLoading = true;
     },
-    getGoodsRequestSuccessed(state, action: PayloadAction<TGoods[]>) {
+    getGoodsRequestSuccessed(state, action: PayloadAction<TGood[]>) {
       state.isLoading = false;
       state.error = null;
       state.goods = action.payload;
     },
-    getGoodsRequestFailed(state, action:PayloadAction<string>) {
+    getGoodsRequestFailed(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
     },
     getUniqueGoodRequestSent(state) {
       state.isLoading = true;
     },
-    getUniqueGoodRequestSuccess(state, action) {
+    getUniqueGoodRequestSuccess(state, action: PayloadAction<TGood>) {
       state.isLoading = false;
-      state.currentGood = action.payload
+      state.currentGood = action.payload;
     },
-    getUniqueGoodRequestFailed(state, action:PayloadAction<string>) {
+    getUniqueGoodRequestFailed(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
     },

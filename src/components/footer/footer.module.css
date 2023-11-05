@@ -39,7 +39,7 @@
   box-sizing: border-box;
   border: 0;
   border-bottom: 2px solid black;
-  font-size: 18px;
+  font-size: calc((100vw - 320px)/(1440 - 320) * (18 - 14) + 14px);
   font-style: normal;
   font-weight: 400;
   line-height: 26px;
@@ -62,7 +62,7 @@
   background: transparent;
   border: 0;
   font-family: "Space Grotesk";
-  font-size: 20px;
+  font-size: calc((100vw - 320px)/(1440 - 320) * (20 - 16) + 16px);
   font-style: normal;
   font-weight: 500;
   line-height: 28px; 
@@ -70,6 +70,14 @@
   position: absolute;
   bottom: 12px;
   right: 0;
+  cursor: pointer;
+  transition: background-color .4s ease-in, border-radius .8s ease-in, ;
+}
+
+.form_button:hover {
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: rgba(13, 110, 253, .8);
 }
 
 .navigation_container {
@@ -103,6 +111,11 @@
   line-height: 22px; 
   color:  #3E3E59;
   text-decoration: none;
+  transition: opacity .2s ease-out;
+}
+
+.link:hover {
+  opacity: 0.4;
 }
 
 .social_media_container {

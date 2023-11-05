@@ -1,15 +1,7 @@
 import axios from "axios";
 import { TAppThunk } from "../services/store";
 import { getUserDataRequestSuccess, setAuthChecked, setUserData } from "../services/slices/user-slice";
-
-const mainUrl = 'https://norma.nomoreparties.space/api/';
-const endPointLogin = 'auth/login';
-const endPointLogouting = 'auth/logout';
-const endPointRegistration = 'auth/register';
-const endPointForgotPassword = 'password-reset';
-const endPointResetPassword = 'password-reset/reset';
-const endPointRefreshToken = 'auth/token';
-const endPointUpdateUserData = 'auth/user';
+import { endPointForgotPassword, endPointLogin, endPointLogouting, endPointRefreshToken, endPointRegistration, endPointResetPassword, endPointUpdateUserData, mainUrl } from "./constants";
 
 const defaultHeaders = {
   "Content-Type": "application/json"
@@ -119,7 +111,7 @@ export const checkUserAuth = () => {
   };
 };
 
-export const  registerUser = (email:string, password:string, name:string) => {
+export const registerUser = (email:string, password:string, name:string) => {
   const body = {
     email: email, 
     password: password,
@@ -130,6 +122,7 @@ export const  registerUser = (email:string, password:string, name:string) => {
   return fetch(mainUrl + endPointRegistration, options)
   .then(checkResponse); 
 };
+
 
 export const loginUser = (email:string, password:string) => {
   const body = {
@@ -169,7 +162,7 @@ export const logoutUser = (refreshToken:string|null) => {
   .then(checkResponse);
 };
 
-export const updateUserData = (name:string|null, email:string|null, password:string|null) => {
+export const updateUserData = (name: string | null | undefined, email: string | null | undefined, password: string | null | undefined) => {
   const body = { 
     "name": name,
     "email": email,

@@ -1,29 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from "@reduxjs/toolkit"
+import { TCartItem } from '../../types/types';
 
-// type TGoodCardItem = {
-//   id: string;
-//   count: number;
-//   name: string;
-//   color: string;
-//   size: number;
-//   price: number;
-//   photo: string;
-// }
-
-const intitialState:any = {
-  goodsArray: [],
-
+type TGoodCardItem<T> = {
+  goodsArray: Array<T>;
 }
+
+const intitialState:TGoodCardItem<TCartItem> = {
+  goodsArray: [],
+};
 
 export const cardSlice = createSlice({
   name: 'cart',
   initialState: intitialState,
   reducers: {
-    addGoodToCart(state, action:PayloadAction<any>) {
+    addGoodToCart(state, action:PayloadAction<TCartItem>) {
       console.log(action.payload);
 
-      const isDuplicateitem = state.goodsArray.find((item:any) => 
+      const isDuplicateitem = state.goodsArray.find((item) => 
         item.id === action.payload.id && item.color === action.payload.color && item.size === action.payload.size
       );
       if (isDuplicateitem) {
@@ -35,22 +29,22 @@ export const cardSlice = createSlice({
     clearCart(state) {
       state.goodsArray = [];
     },
-    removeGoodFromCart(state, action:PayloadAction<any>) {
-      state.goodsArray = state.goodsArray.filter((item:any) => 
+    removeGoodFromCart(state, action:PayloadAction<TCartItem>) {
+      state.goodsArray = state.goodsArray.filter((item) => 
       item.id_ !== action.payload.id_ || item.color !== action.payload.color || item.size !== action.payload.size
       )
     },
-    increaseCount(state, action:PayloadAction<any>) {
-      const item = state.goodsArray.find((item:any) => 
+    increaseCount(state, action:PayloadAction<TCartItem>) {
+      const item = state.goodsArray.find((item) => 
         item.id_ === action.payload.id_ 
       )
-      item.count = item.count + 1;
+      item!.count = item!.count + 1;
     },
-    decreaseCount(state, action:PayloadAction<any>) {
-      const item = state.goodsArray.find((item:any) => 
+    decreaseCount(state, action:PayloadAction<TCartItem>) {
+      const item = state.goodsArray.find((item) => 
         item.id_ === action.payload.id_ 
       )
-      item.count = item.count <= 1 ? item.count :item.count - 1
+      item!.count = item!.count <= 1 ? item!.count :item!.count - 1
       
     },
 

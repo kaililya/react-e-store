@@ -6,37 +6,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
+  width: 180px;
   padding: 6px;
   flex: 1;
+  padding: 24px;
 }
 
 .good_wrapper__horizontal {
-  flex: 1 0 100%;
+  /* flex: 1 0 100%; */
+  width: 100%;
   gap: 16px;
   flex-direction: row;
+  margin-left: 40px;
 }
 
 .additional_wrapper {
   /* outline: 1px solid rgb(203, 203, 9); */
-  flex: 0 5 200px;
+  flex: 0 5 100px;
 }
 
-/* .good_wrapper:hover {
-  border-radius: 5px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.05), 0 5px 5px rgba(0,0,0,0.1);
-} */
+.good_wrapper:hover {
 
-/* .good_wrapper:hover .good_title{
-  font-size: 18px;
-} */
+} 
+
 
 .image_wrapper {
   overflow: hidden;
   height: 90px;
   width: 160px;
   position: relative;
+  transition: transform .4s ease-out;
 }
+
+
+.good_wrapper:hover .image_wrapper{
+  transform: scale(120%);
+}
+
 
 .good_image {
   position: absolute;
@@ -55,10 +62,12 @@
   font-weight: 500;
   line-height: 28px; 
   letter-spacing: -0.4px;
-  /* text-align: center; */
-  margin: 0;
+  margin: 12px 0 0;
 }
 
+.good_title_media {
+  display: none;
+}
 
 .good_price {
   margin: 0;
@@ -88,6 +97,50 @@
   font-style: normal;
   font-weight: 400;
   line-height: 22px; /* 157.143% */
+  max-width: 330px;
 }
+
+@media (max-width: 1125px) {
+  .good_wrapper__horizontal {
+    flex-direction: column;
+    margin-left: 20px;
+  }
+  .good_description {
+    margin: 0;
+
+    flex: 1 10;
+    color:  #3E3E59;
+    font-family: "Inter";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; 
+    max-width: 360px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .good_wrapper {
+    width: calc((100vw - 320px)/(600 - 320) * (350 - 180) + 180px); 
+  }
+
+  .image_wrapper {
+    /* border: 2px solid #3E3E59; */
+
+    height: 162px;
+    width: 230px;
+  }
+
+  .good_title {
+    font-size: calc((100vw - 320px)/(600 - 320) * (20 - 18) + 18px);
+ 
+  }
+
+  .good_price {
+    font-size: alc((100vw - 320px)/(600 - 320) * (18 - 16) + 16px);
+  }
+}
+
 
 

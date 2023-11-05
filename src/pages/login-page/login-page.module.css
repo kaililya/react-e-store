@@ -1,9 +1,9 @@
 .wrapper {
-  width: 100%;
   display: flex;
   justify-content: center;
   margin: 100px 0 0;
   width: 300px;
+  margin: 0 auto;
 
 }
 
@@ -82,6 +82,7 @@
   width: 100%;
   max-height: 52px;
   transition: color .2s ease-in, border-radius .3s;
+  cursor: pointer;
 }
 
 .submit_button:hover {

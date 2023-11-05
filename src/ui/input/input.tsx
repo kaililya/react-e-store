@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styles from './input.module.css';
 
-// TODO 
-// 1) Менять классы чтоюы решить проблему
-
-
 function Input(props:any) {
   const { label, errorMessage, onChange, ...inputProps } = props;
 
@@ -17,12 +13,10 @@ function Input(props:any) {
   }
  
 
-  console.log(isValue);
 
   return (
     <div className={styles.main_container}>
       <input {...inputProps}
-        // value={isValue}
         className={`${styles.input} ${!isValue ? styles.input_pizda : ''}`}
 
         onChange={(e) => {

@@ -1,18 +1,51 @@
+@keyframes example {
+  from {
+    transform: rotateZ(-33deg);
+  }
+  to {
+    transform: rotateZ(148deg);
+  }
+}
+
 .logo_container {
   display: flex;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
 }
+
 
 .logo {
   width: 19px;
   height: 19px;
+  animation: example 5s linear 2s infinite;
 }
 
 .title {
+  color: black;
+  border-bottom: 0;
+  text-decoration: none;
   font-family: 'Space Grotesk';
   font-weight: 600;
   margin: 0;
   line-height: 1;
   font-size: 24px;
+  transition: opacity .2s ease-out;
+
+}
+
+.title:hover {
+  opacity: 0.6;
+} 
+
+@media (max-width: 740px) {
+  .logo {
+    display: none;
+  }
+}
+
+@media (max-width: 740px) {
+  .title {
+    font-size: calc((100vw - 320px)/(740 - 320) * (24 - 20) + 20px);
+  }
 }

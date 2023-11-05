@@ -1,0 +1,24 @@
+.main_container {
+  padding: 16px;
+  background-color: rgb(255, 255, 255);
+  height: 200px;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.title {
+  margin: 0 0 6px;
+  color: #121212;
+  text-decoration: none;
+  font-family: "Space Grotesk";
+  font-size: calc((100vw - 320px)/(1440 - 320) * (34 - 20) + 20px);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: -0.6px
+}

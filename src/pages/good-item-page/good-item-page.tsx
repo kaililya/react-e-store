@@ -1,38 +1,35 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './good-item-page.module.css'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
-import { fetchCurrentGood, fetchGoods } from '../../services/thunks/ActionCreators';
-import cardSlice, { addGoodToCart } from '../../services/slices/card-slice';
-import { values } from 'lodash';
+import { fetchCurrentGood, fetchGoods } from '../../services/thunks/thunks';
+import  { addGoodToCart } from '../../services/slices/card-slice';
 import { useParams } from 'react-router';
-import goodsSlice, { setClearUniqueGood } from '../../services/slices/goodsSlice';
+import  { setClearUniqueGood } from '../../services/slices/goodsSlice';
 import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
+import { TailSpin } from 'react-loader-spinner';
 
-// TODO
-// 1) Если есть хотя бы 1 товар, то нужно менять надпись кнопки на UPDATE
 
-function GoodItemPage() {
+
+const GoodItemPage = ():JSX.Element => {
+
   const dispatch = useAppDispatch();
-  const {name}  = useParams();
-  console.log(name);
-  const [sizeState, setSizeState] = useState(undefined);
-  const [colorState, setColorState] = useState<any>(undefined);
-  const [amountGoodsState, setAmountGoodsState] = useState(1);
-  const [sizeButtonActiveSatet, setsizeButtonActiveSatet] = useState<any>('');
-  const [colorButtonActiveSatet, setColorButtonActiveSatet] = useState<any>('');
+  const { name }  = useParams<string>();
+  const [ sizeState, setSizeState ] = useState<string>('');
+  const [ colorState, setColorState ] = useState<string>('');
+  const [ amountGoodsState, setAmountGoodsState ] = useState<number>(1);
+  const [ sizeButtonActiveSatet, setsizeButtonActiveSatet ] = useState<any>('');
+  const [ colorButtonActiveSatet, setColorButtonActiveSatet ] = useState<any>('');
 
 
   useEffect(() => {
-    
     dispatch(fetchCurrentGood(name));
-
     return () => {
       dispatch(setClearUniqueGood());
     }
   }, [name, dispatch]);
   
   const data = useAppSelector(store => store.goodsReducer.currentGood) || [];
-  console.log(data);
+  const isLoading = useAppSelector(store => store.goodsReducer.isLoading)
 
   useEffect(() => {
     try {
@@ -50,7 +47,7 @@ function GoodItemPage() {
       }
       setsizeButtonActiveSatet({activeObject: null, objects:massiv})
 
-      const colorsArray = data[0].colors || [];
+      const colorsArray: Array<string> | [] = data[0].colors || [];
       let arrKeysColor = ['id'];
       let massivColor = [];
       for (let i = 0; i < colorsArray.length; i++) {
@@ -67,23 +64,21 @@ function GoodItemPage() {
   }, [data])
 
   if (data.length === 0 || data === undefined  || !data ) {
-    return <p>данных нет</p>
+    return (<TailSpin wrapperClass={styles.spinner} color='black' />)
   } else {
   }
-
-
 
   const colorsArray = data[0].colors || [];
   const sizesArray = data[0].sizes || [];
   const photosArray = data[0].photos[0] || [];
 
-  const handleClickColor = (e:any) => {
-    const newColor = e.target.value;
+  const handleClickColor = (e:React.MouseEvent<HTMLButtonElement>) => {
+    const newColor = (e.target as HTMLButtonElement).value;
     setColorState(newColor);
   }
 
-  const handleClickSize = (e:any) => {
-    const newSize = e.target.value;
+  const handleClickSize = (e:React.MouseEvent<HTMLButtonElement>) => {
+    const newSize = (e.target as HTMLButtonElement).value;
     setSizeState(newSize);
   }
 
@@ -117,11 +112,11 @@ function GoodItemPage() {
     }
   }
 
-  function toggleActive(index:any) {
+  function toggleActive(index: number) {
     setsizeButtonActiveSatet({...sizeButtonActiveSatet, activeObject:sizeButtonActiveSatet.objects[index]})
   }
 
-  function toggleActiveStyles(index:any) {
+  function toggleActiveStyles(index: number) {
     try {
       if (sizeButtonActiveSatet.objects[index] === sizeButtonActiveSatet.activeObject) {
         return `${styles.size_button} ${styles.size_button__active}`
@@ -133,12 +128,11 @@ function GoodItemPage() {
     }
   }
 
-  function toggleActiveColor(index:any) {
+  function toggleActiveColor(index: number) {
     setColorButtonActiveSatet({...colorButtonActiveSatet, activeObject:colorButtonActiveSatet.objects[index]})
-  }
+  };
 
-  function toggleActiveStylesColor(index:any) {
-
+  function toggleActiveStylesColor(index: number) {
     try {
       if (colorButtonActiveSatet.objects[index] === colorButtonActiveSatet.activeObject) {
         return `${styles.color_button__active}`
@@ -148,77 +142,94 @@ function GoodItemPage() {
     } catch (error) {
       
     }
-  }
-
+  };
 
   return (
     <>
-    <Breadcrumbs customInlineStyle={{padding:16}}/>
-    <section className={styles.main_container}>
-      <div className={styles.main_container_wraper}>
-      <h2 className={styles.good_title_media}>{data[0].name}</h2>
-        <ul className={styles.second_column}>
-          {photosArray[colorState]?.map((image:string) => (
-          <li key={image} className={styles.image_wrapper}>
-            <img className={styles.good_image} src={image} alt="" />
-          </li>
-        ))}
-        </ul>
-        <div className={styles.first_column}>
-          <div className={styles.first_column_wrapper}>
-            <h2 className={styles.good_title}>{data[0].name}</h2>
-            <p className={styles.good_description}>{data[0].description}</p>
-            <h3 className={styles.good_price}>{data[0].price}$</h3>
-            <form action="">
-              <div className={styles.colors_conatiner}>
-                <label className={styles.colors_conatiner_label} >Colors</label>
-                <div className={styles.colors_button_container} >
-                {colorsArray.map((color:any,id:any) => (
-                  <button onClick={(e) => {handleClickColor(e);toggleActiveColor(id)}} value={color} key={color}
-                  className={color === 'white' ? styles.color_button :
-                             color === 'green' ? `${styles.color_button} ${styles.color_button__green}`: 
-                             color === 'black' ? `${styles.color_button} ${styles.color_button__black}`:
-                             color === 'pink'  ? `${styles.color_button} ${styles.color_button__pink}`:
-                             color === 'blue'  ? `${styles.color_button} ${styles.color_button__blue}`: 'no_class'
-                            }
-                  type="button">
-                  <div 
-                  className={toggleActiveStylesColor(id)}
-
-                  ></div></button>
-                ))}
+      <Breadcrumbs customInlineStyle={ { padding:16 } }/>
+      {isLoading ? (
+      <TailSpin wrapperClass={styles.spinner} color='black' />
+        ) : (
+      <section className={styles.main_container}>
+        <div className={styles.main_container_wraper}>
+          <h2 className={styles.good_title_media}>{data[0].name}</h2>
+            <ul className={styles.second_column}>
+              {photosArray[colorState]?.map((image:string) => (
+              <li key={image} className={styles.image_wrapper}>
+                <img className={styles.good_image} src={image} alt="" />
+              </li>
+              ))}
+              </ul>
+              <div className={styles.first_column}>
+                <div className={styles.first_column_wrapper}>
+                  <h2 className={styles.good_title}>{data[0].name}</h2>
+                  <p className={styles.good_description}>{data[0].description}</p>
+                  <h3 className={styles.good_price}>{data[0].price}$</h3>
+                  <form action="">
+                    <div className={styles.colors_conatiner}>
+                      <label className={styles.colors_conatiner_label}>Colors</label>
+                      <div className={styles.colors_button_container} >
+                      {colorsArray.map( (color: string,id: number) => (
+                        <button 
+                          onClick={(e) => {
+                            handleClickColor(e);
+                            toggleActiveColor(id)}
+                          } 
+                          value={color} 
+                          key={color}
+                          className={color === 'white' ? styles.color_button :
+                                     color === 'green' ? `${styles.color_button} ${styles.color_button__green}`: 
+                                     color === 'red' ? `${styles.color_button} ${styles.color_button__red}`: 
+                                     color === 'black' ? `${styles.color_button} ${styles.color_button__black}`:
+                                     color === 'pink'  ? `${styles.color_button} ${styles.color_button__pink}`:
+                                     color === 'blue'  ? `${styles.color_button} ${styles.color_button__blue}`: 'no_class'}
+                          type="button">
+                          <div className={toggleActiveStylesColor(id)}></div>
+                        </button>
+                      ))}
+                      </div>
+                    </div>
+                    <label className={styles.size_conatiner_label}>Size</label>
+                    <ul className={styles.sizes_container}>
+                      {sizesArray.map((size:any,id:any) => (
+                      <li key={size} className={styles.sizes_container_item}>
+                        <button 
+                          onClick={(e)=> {
+                            toggleActive(id);
+                            handleClickSize(e);
+                                  }}                      
+                           value={size}
+                           className={toggleActiveStyles(id)}
+                           type="button">
+                            {size}
+                        </button>
+                      </li>
+                      ))}
+                    </ul>
+                    <div className={styles.amoumt_container}>
+                     <button onClick={handleDecreseAmount}
+                        name='button decrease' 
+                        className={styles.amount_button}
+                        type="button">
+                          -
+                      </button>
+                     <p className={styles.amount_goods}>{amountGoodsState}</p>
+                     <button onClick={handleIncreseAmount}
+                        name='button increase' 
+                        className={styles.amount_button}
+                         type="button">
+                          +
+                      </button>
+                    </div>
+                    <button className={styles.add_button}
+                     type='button' 
+                     onClick={handleAddGoodToCart}>Add to the Cart</button>
+                  </form>
                 </div>
               </div>
-              <label className={styles.size_conatiner_label}>Size</label>
-
-              <ul className={styles.sizes_container}>
-                {sizesArray.map((size:any,id:any) => (
-                <li key={size} className={styles.sizes_container_item}>
-                  <button 
-                    onClick={(e)=> {
-                      toggleActive(id);
-                      handleClickSize(e);
-                            }}                      
-                     value={size}
-                     className={toggleActiveStyles(id)}
-                     type="button"
-                  >
-                  {size}
-                  </button>
-                </li>
-                ))}
-              </ul>
-              <div className={styles.amoumt_container}>
-               <button onClick={handleDecreseAmount} name='button decrease' className={styles.amount_button} type="button">-</button>
-               <p className={styles.amount_goods}>{amountGoodsState}</p>
-               <button onClick={handleIncreseAmount} name='button increase' className={styles.amount_button} type="button">+</button>
-              </div>
-              <button className={styles.add_button} type='button' onClick={handleAddGoodToCart}>Add to the Cart</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+            </div>
+          </section>
+        )}
     </>
   )
 }

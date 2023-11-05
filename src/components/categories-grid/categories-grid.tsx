@@ -1,20 +1,14 @@
 import { Link } from 'react-router-dom'
 import styles from './categories-grid.module.css'
-import { useEffect, useMemo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
-import { fetchGoods } from '../../services/thunks/ActionCreators';
-// TODO
-// данный компонент нужно обыгарть с пропсами фото и название категории
-function CategoriesGrid({data}:any) {
+import { useMemo } from 'react';
+import { TGood } from '../../types/types';
+import { goodsPATH } from '../../utils/constants';
 
-  // const dispatch = useAppDispatch();
+type TCategoriesGrid = {
+  data: TGood[]
+}
 
-  // useEffect(() => {
-  //   dispatch(fetchGoods())
-
-  // },[dispatch])
-  
-  // const data = useAppSelector(store => store.goodsReducer.goods);
+const CategoriesGrid = ({ data }:TCategoriesGrid):JSX.Element => {
 
   const photoLifeStleCategory = useMemo(() => {
     try {
@@ -36,7 +30,7 @@ function CategoriesGrid({data}:any) {
   const photoMaleCategory = useMemo(() => {
     try {
 
-      return data[3].photos[0].black[1]
+      return data[1].photos[0].white[1]
 
     } catch (error) {
       
@@ -46,7 +40,6 @@ function CategoriesGrid({data}:any) {
   if (!data) {
     return <p>no data</p>;
   } else {
-    // console.log(data)
   }
 
   return (
@@ -54,15 +47,14 @@ function CategoriesGrid({data}:any) {
         <ul className={styles.grid_container}>
            <li className={`${styles.grid_item} ${styles.grid_item__high}`} style={{backgroundImage:`url(${photoLifeStleCategory})`}}>
               <h3 className={styles.title}>Lifestyle</h3>
-              <Link to='/*' className={styles.link}>Explore</Link>
+              <Link to={`${goodsPATH}?type=lifestyle`} className={styles.link}>Explore</Link>
            </li>
            <li  className={`${styles.grid_item} ${styles.grid_item__right_top}`} style={{backgroundImage:`url(${photoMaleCategory})`}}>
              <h3 className={styles.title}>Male</h3>
-             <Link to='/*' className={styles.link}>Explore</Link>
+             <Link to={`${goodsPATH}?sex=man`} className={styles.link}>Explore</Link>
            </li>
-
-           <li  className={`${styles.grid_item} ${styles.grid_item__right_bottom}`} style={{backgroundImage:`url(${photoFemaleCategory})`}}>
-             <Link to='/*' className={styles.link}>Explore</Link>
+           <li className={`${styles.grid_item} ${styles.grid_item__right_bottom}`} style={{backgroundImage:`url(${photoFemaleCategory})`}}>
+             <Link to={`${goodsPATH}?sex=female`} className={styles.link}>Explore</Link>
              <h3 className={styles.title}>Female</h3>
            </li>
         </ul>

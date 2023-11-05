@@ -20,9 +20,9 @@ export type TRootState = ReturnType<typeof rootReducer>;
 export type TAppStore = ReturnType<typeof setupStore>;
 export type TAppDispatch = TAppStore['dispatch'];
 
-export type TActions = TUserActionTypes | 
-  TGoodsActionTypes |
-  TCardActionTypes;
+export type TActions = TUserActionTypes  | 
+                       TGoodsActionTypes |
+                       TCardActionTypes;
 
 export type TAppThunk<TReturn = void> = ThunkAction<TReturn, TRootState, never, TActions>;
 
