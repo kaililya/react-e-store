@@ -72,13 +72,13 @@ const Header = ():JSX.Element => {
         </nav>
         <div className={styles.right_nav_container}>
           <NavLink className={switchClassName} to={profilePATH}>
-            <img className={styles.right_nav_image} src={login_image} alt="login image" />
+            <img className={styles.right_nav_image} src={login_image} alt=" " />
           </NavLink>
           <Link
             to={cartPATH}
             state={{ background: location }}
           >
-            <img className={styles.right_nav_image} src={cart_image} alt="cart image" />
+            <img className={styles.right_nav_image} src={cart_image} alt=" " />
           </Link>
             
             <div className={styles.curcle}>

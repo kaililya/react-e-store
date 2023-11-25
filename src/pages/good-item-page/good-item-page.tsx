@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import styles from './good-item-page.module.css'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { fetchCurrentGood } from '../../services/thunks/thunks';
@@ -28,7 +28,7 @@ const GoodItemPage = ():JSX.Element => {
     }
   }, [name, dispatch]);
   
-  const data = useAppSelector(store => store.goodsReducer.currentGood) || [];
+  const data =useMemo(() => {return useAppSelector(store => store.goodsReducer.currentGood) || [];},[]) 
   const isLoading = useAppSelector(store => store.goodsReducer.isLoading)
 
   useEffect(() => {

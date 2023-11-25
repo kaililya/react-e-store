@@ -30,7 +30,7 @@ const RegisterPage = ():JSX.Element => {
     if(registrationRequestSuccess){
       setTimeout(() => navigate(loginPATH), 4000);
     }
-  }, [registrationRequestSuccess]);
+  }, [registrationRequestSuccess, navigate]);
   
   return (
     <div className={styles.wrapper}>

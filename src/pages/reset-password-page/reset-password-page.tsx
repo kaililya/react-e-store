@@ -27,9 +27,9 @@ const  ResetPasswordPage = ():JSX.Element => {
 
   React.useEffect(() => {
     if(resetPasswordRequestSuccess){
-      const timer = setTimeout(() => navigate(loginPATH, {replace: true}), 3000);
+      setTimeout(() => navigate(loginPATH, {replace: true}), 3000);
     }
-  }, [resetPasswordRequestSuccess])
+  }, [resetPasswordRequestSuccess, navigate])
 
   return (
     <div className={styles.wrapper}>

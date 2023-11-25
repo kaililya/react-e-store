@@ -30,7 +30,7 @@ const ForgotPasswordPage = ():JSX.Element => {
       setTimeout(() => navigate(resetPasswordPATH, { replace: true }), 3000);
     }
   
-  }, [forgotPasswordRequestSuccess]);
+  }, [forgotPasswordRequestSuccess, navigate]);
 
   return (
     <div className={styles.wrapper}>
