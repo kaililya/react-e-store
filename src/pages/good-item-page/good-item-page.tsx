@@ -29,7 +29,7 @@ const GoodItemPage = ():JSX.Element => {
   }, [name, dispatch]);
   
   const data = useAppSelector(store => store.goodsReducer.currentGood) || [];
-  const isLoading = useAppSelector(store => store.goodsReducer.isLoading)
+  const isLoading = useAppSelector(store => store.goodsReducer.isLoading);
 
   const defaultColor = useMemo(() => {
     try {
@@ -38,11 +38,9 @@ const GoodItemPage = ():JSX.Element => {
     } catch (error) {
       
     }
-
   },[data])
 
   console.log(defaultColor);
-
 
   const sizeAndColorArr = useMemo(() => {
     try {
