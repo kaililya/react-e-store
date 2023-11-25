@@ -28,10 +28,10 @@ const GoodItemPage = ():JSX.Element => {
     }
   }, [name, dispatch]);
   
-  const dataNoMemo = useAppSelector(store => store.goodsReducer.currentGood) || [];
-  const data = useMemo(() => {
-    return dataNoMemo
-  },[dataNoMemo])
+  const data = useAppSelector(store => store.goodsReducer.currentGood);
+  // const data = useMemo(() => {
+  //   return dataNoMemo
+  // },[dataNoMemo])
   const isLoading = useAppSelector(store => store.goodsReducer.isLoading)
 
   useEffect(() => {
