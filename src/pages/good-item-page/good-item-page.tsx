@@ -28,7 +28,7 @@ const GoodItemPage = ():JSX.Element => {
     }
   }, [name, dispatch]);
   
-  const data =useMemo(() => {return useAppSelector(store => store.goodsReducer.currentGood) || [];},[]) 
+  const data = useAppSelector(store => store.goodsReducer.currentGood) || [];
   const isLoading = useAppSelector(store => store.goodsReducer.isLoading)
 
   useEffect(() => {
