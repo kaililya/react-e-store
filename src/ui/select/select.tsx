@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router';
 import styles from './select.module.css'
 
 interface SelectOption {
@@ -20,7 +19,6 @@ export default function Select({
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }) {
 
-  const location = useLocation();
   var urlParams = new URLSearchParams(window.location.search);
   // console.log(label);
   const label2 = label === 'Sort by' ? 'sortBy' : label.toLowerCase();

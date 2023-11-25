@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './good-item-page.module.css'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
-import { fetchCurrentGood, fetchGoods } from '../../services/thunks/thunks';
+import { fetchCurrentGood } from '../../services/thunks/thunks';
 import  { addGoodToCart } from '../../services/slices/card-slice';
 import { useParams } from 'react-router';
 import  { setClearUniqueGood } from '../../services/slices/goodsSlice';

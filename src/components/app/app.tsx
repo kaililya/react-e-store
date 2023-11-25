@@ -35,16 +35,16 @@ const App = ():JSX.Element => {
       <div className={styles.wrapper}>
         <Header/>
         <Routes location={background || location}>
-          <Route path={mainPATH} element={<MainPage />}/>
-          <Route path={faqPATH} element={<AboutPage />}/>
+          <Route path={mainPATH} element={<MainPage />} />
+          <Route path={faqPATH} element={<AboutPage />} />
           <Route path={loginPATH} element= {<OnlyUnAuth component={<LoginPage />}/>} />
           <Route path={registerPATH} element= {<OnlyUnAuth component={<RegisterPage />}/>}/>
           <Route path={forgotPasswordPATH} element= {<OnlyUnAuth component={<ForgotPasswordPage />}/>} />
           <Route path={resetPasswordPATH} element= {<OnlyUnAuth component={<ResetPasswordPage />}/>} />
           <Route path={profilePATH} element= {<OnlyAuth component={<ProfilePage />}/>} />
           <Route path={goodsPATH} element={<GoodsPage/>}/>
-          <Route path={goodsNamePATH} element={<GoodItemPage/>}></Route>
-          <Route path={errorPATH} element={<ErrorPage />}/>
+          <Route path={goodsNamePATH} element={<GoodItemPage/>} />
+          <Route path={errorPATH} element={<ErrorPage />} />
         </Routes>
         {background && (
         <Routes> 

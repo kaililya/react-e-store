@@ -28,7 +28,7 @@ const RegisterPage = ():JSX.Element => {
 
   React.useEffect(() => {
     if(registrationRequestSuccess){
-      const timer = setTimeout(() => navigate(loginPATH), 4000);
+      setTimeout(() => navigate(loginPATH), 4000);
     }
   }, [registrationRequestSuccess]);
   

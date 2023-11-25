@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useMemo, useRef, useState } from 'react'
 import styles from './profile-form.module.css'
 import useForm from '../../hooks/useForm'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
@@ -20,11 +20,11 @@ const ProfileForm = ():JSX.Element => {
   const [ inputChanged, setInputChanged ] = useState<boolean>(false);
   const userDataStore = useAppSelector(store => store.userReducer.userData);
   const { updateUserDataRequest, updateUserDataRequestFailed } = useAppSelector(store => store.userReducer);
-
+  
   const oldEmail = userDataStore?.email;
   const oldName = userDataStore?.name;
 
-  const {hadleChangeUserData, userData, setUserData} = useForm<TFormStateType>({
+  const { hadleChangeUserData, userData, setUserData } = useForm<TFormStateType>({
     name: '',
     email: '',
     password: '',

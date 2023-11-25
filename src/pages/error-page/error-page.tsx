@@ -1,6 +1,4 @@
-import React from 'react'
 import styles from './error-page.module.css'
-import error_page_icon from '../../images/icons/error_page_icon.png'
 import { Link } from 'react-router-dom'
 import { mainPATH } from '../../utils/constants'
 

@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import ProfileForm from '../../components/profile-form/profile-form';
 import { fetchLogoutThunk } from '../../services/thunks/thunks';
-import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
-import { TailSpin } from 'react-loader-spinner';
 
 const ProfilePage = ():JSX.Element => {
 

@@ -24,7 +24,7 @@ const Modal = ({ children }:TModal):JSX.Element => {
     return () => {
       document.removeEventListener("keydown", handleKeyPressEsc);
     }
-  }, []);
+  });
 
   return ReactDOM.createPortal(
     (

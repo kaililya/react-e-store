@@ -60,7 +60,7 @@ export const fetchForgotPasswordThunk = (email: string) => async(dispatch: TAppD
 export const fetchResetPasswordThunk = (password:string, code:string) => async(dispatch: TAppDispatch) => {
   try {
     dispatch(resetPasswordRequest());
-    const response = await resetPasswordPost(password,code);
+    const response = await resetPasswordPost(password, code);
     if (response.success) {
       dispatch(resetPasswordRequestSuccess())
     } else {

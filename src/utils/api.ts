@@ -1,4 +1,3 @@
-import axios from "axios";
 import { TAppThunk } from "../services/store";
 import { getUserDataRequestSuccess, setAuthChecked, setUserData } from "../services/slices/user-slice";
 import { endPointForgotPassword, endPointLogin, endPointLogouting, endPointRefreshToken, endPointRegistration, endPointResetPassword, endPointUpdateUserData, mainUrl } from "./constants";

@@ -2,7 +2,7 @@ import { configureStore,combineReducers } from '@reduxjs/toolkit';
 import goodsReducer, { TGoodsActionTypes } from './slices/goodsSlice'
 import cardReducer, { TCardActionTypes } from './slices/card-slice'
 import userReducer, { TUserActionTypes } from './slices/user-slice'
-import { ThunkDispatch, ThunkAction } from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 
 const rootReducer = combineReducers({
   goodsReducer,

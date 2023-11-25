@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import { decreaseCount, increaseCount, removeGoodFromCart } from '../../services/slices/card-slice';
 import styles from './cart-item.module.css'
@@ -14,7 +13,6 @@ export type TCartItemProps = {
 export const CartItem = ({ item }:TCartItemProps):JSX.Element => {
   
   const dispatch = useAppDispatch();
-
   const handleClickIncreseQuantity = () => {
     dispatch(increaseCount(item));
   };
@@ -30,7 +28,7 @@ export const CartItem = ({ item }:TCartItemProps):JSX.Element => {
 
   return (
     <article className={`${styles.good_wrapper__horizontal} ${styles_good_item.good_wrapper} ${styles_good_item.good_wrapper__horizontal}`}>
-      <img className={styles.good_image} src={item.photo[0]} alt={item.name} />
+      <img className={styles.good_image} src={item.photo[0]} />
       <div className={styles_good_item.additional_wrapper}>
         <h3 className={styles_good_item.good_title}>{item.name}</h3>
         <p className={styles_good_item.good_price}>

@@ -48,7 +48,7 @@ const Slider = ({ data }: TSlider):JSX.Element=> {
     >
       <SwiperSlide>
         <div className={styles.slide_container}>
-          <img className={styles.slide_image} src={photoFootballCategory}/>
+          <img className={styles.slide_image} src={photoFootballCategory} alt=' '/>
           <h3 className={styles.title}>Lets play football</h3>
           <p className={styles.description}>Effective running and excellent dribbling</p>
           <Link to={`${goodsPATH}?type=football`}>
@@ -58,7 +58,7 @@ const Slider = ({ data }: TSlider):JSX.Element=> {
       </SwiperSlide>
       <SwiperSlide> 
         <div className={styles.slide_container}>
-          <img className={styles.slide_image} src={photoBasketballCategory}/>
+          <img className={styles.slide_image} src={photoBasketballCategory} alt=' '/>
           <h3 className={styles.title} >Time for cross</h3>
           <p className={styles.description}>Run longer and even more comfortably</p>
           <Link to={`${goodsPATH}?type=running`}>

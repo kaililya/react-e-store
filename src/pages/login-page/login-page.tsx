@@ -1,14 +1,13 @@
 import React from 'react'
 import styles from './login-page.module.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import useForm from '../../hooks/useForm';
 import Input from '../../ui/input/input';
 import { fetchLoginThunk } from '../../services/thunks/thunks';
 import { TailSpin } from "react-loader-spinner";
-import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
 import { MdDone } from 'react-icons/md';
-import {ImCancelCircle} from 'react-icons/im';
+import { ImCancelCircle } from 'react-icons/im';
 import { forgotPasswordPATH, inputsLoginPage, registerPATH } from '../../utils/constants';
 
 const LoginPage = ():JSX.Element => {

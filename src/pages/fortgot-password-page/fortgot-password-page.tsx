@@ -27,7 +27,7 @@ const ForgotPasswordPage = ():JSX.Element => {
 
   React.useEffect(() => {
     if (forgotPasswordRequestSuccess) {
-      const timer = setTimeout(() => navigate(resetPasswordPATH, { replace: true }), 3000);
+      setTimeout(() => navigate(resetPasswordPATH, { replace: true }), 3000);
     }
   
   }, [forgotPasswordRequestSuccess]);
