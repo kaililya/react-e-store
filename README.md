@@ -3,7 +3,7 @@
 
 
 # Проект: Nayzak (E-store)
-## [Ссылка на сайт](https://react-e-store-iota.vercel.app/react-e-store/)
+## [Ссылка на сайт](https://kaililya.github.io/react-e-store/)
 
 #### О проекте
 
