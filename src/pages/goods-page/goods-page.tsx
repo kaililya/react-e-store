@@ -25,7 +25,7 @@ const GoodsPage = () => {
   const isLoading = useAppSelector(store => store.goodsReducer.isLoading);
 
   const handelResetFilters = () => {
-    console.log('handelResetFilters');
+    // console.log('handelResetFilters');
     search.delete('sex');
     search.delete('type');
     search.delete('sortBy');
@@ -54,13 +54,13 @@ const GoodsPage = () => {
           <Select
             onChange={(e) => {
               if (e.target.value === 'all') {
-                console.log('===yes===');
+                // console.log('===yes===');
                 search.delete('sortBy');
                 setSearch(search, {
                   replace: true,
                 });
               } else {
-                console.log('===no===');
+                // console.log('===no===');
                 search.set('sortBy', e.target.value);
                 setSearch(search, {
                   replace: true,

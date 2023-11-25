@@ -15,7 +15,7 @@ export const cardSlice = createSlice({
   initialState: intitialState,
   reducers: {
     addGoodToCart(state, action:PayloadAction<TCartItem>) {
-      console.log(action.payload);
+      // console.log(action.payload);
 
       const isDuplicateitem = state.goodsArray.find((item) => 
         item.id === action.payload.id && item.color === action.payload.color && item.size === action.payload.size

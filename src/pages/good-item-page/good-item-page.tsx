@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import styles from './good-item-page.module.css'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { fetchCurrentGood } from '../../services/thunks/thunks';
@@ -31,11 +31,21 @@ const GoodItemPage = ():JSX.Element => {
   const data = useAppSelector(store => store.goodsReducer.currentGood) || [];
   const isLoading = useAppSelector(store => store.goodsReducer.isLoading)
 
-  useEffect(() => {
+  const defaultColor = useMemo(() => {
     try {
-      const defaultColor = Object.keys(data[0].photos[0])[0];
-      setColorState(defaultColor);
+      setColorState(Object.keys(data[0].photos[0])[0]);
 
+    } catch (error) {
+      
+    }
+
+  },[data])
+
+  console.log(defaultColor);
+
+
+  const sizeAndColorArr = useMemo(() => {
+    try {
       const sizesArray = data[0].sizes || [];
       let arrKeys = ['id'];
       let massiv = [];
@@ -46,7 +56,6 @@ const GoodItemPage = ():JSX.Element => {
           massiv.push(customObject);
       }
       setsizeButtonActiveSatet({activeObject: null, objects:massiv})
-
       const colorsArray: Array<string> | [] = data[0].colors || [];
       let arrKeysColor = ['id'];
       let massivColor = [];
@@ -57,11 +66,43 @@ const GoodItemPage = ():JSX.Element => {
           massivColor.push(customObject);
       }
       setColorButtonActiveSatet({activeObject: null, objects: massiv})
-
     } catch (error) {
-      <p>я хз что тут вернуть</p>
+      
     }
-  }, [data])
+  },[data]);
+
+  console.log(sizeAndColorArr);
+  // useEffect(() => {
+  //   try {
+      // const defaultColor = Object.keys(data[0].photos[0])[0];
+      // setColorState(defaultColor);
+
+      // const sizesArray = data[0].sizes || [];
+      // let arrKeys = ['id'];
+      // let massiv = [];
+      // for (let i = 0; i < sizesArray.length; i++) {
+      //     let customObject = {
+      //         [arrKeys[0]]: sizesArray[i]
+      //     }
+      //     massiv.push(customObject);
+      // }
+      // setsizeButtonActiveSatet({activeObject: null, objects:massiv})
+
+      // const colorsArray: Array<string> | [] = data[0].colors || [];
+      // let arrKeysColor = ['id'];
+      // let massivColor = [];
+      // for (let i = 0; i < colorsArray.length; i++) {
+      //     let customObject = {
+      //         [arrKeysColor[0]]: colorsArray[i]
+      //     }
+      //     massivColor.push(customObject);
+      // }
+      // setColorButtonActiveSatet({activeObject: null, objects: massiv})
+
+  //   } catch (error) {
+  //     <p>я хз что тут вернуть</p>
+  //   }
+  // }, [data])
 
   if (data.length === 0 || data === undefined  || !data ) {
     return (<TailSpin wrapperClass={styles.spinner} color='black' />)

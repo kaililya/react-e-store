@@ -45,7 +45,7 @@ const ProfileForm = ():JSX.Element => {
 
   const hadleSubmit = (e:FormEvent) => {
     e.preventDefault();
-    console.log(userData.name, userData.email, userData.password)
+    // console.log(userData.name, userData.email, userData.password)
     dispatch(updateUserDataThunk(userData.name, userData.email, userData.password));
   };
 

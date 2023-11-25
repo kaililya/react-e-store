@@ -22,14 +22,14 @@ export default function Select({
   var urlParams = new URLSearchParams(window.location.search);
   // console.log(label);
   const label2 = label === 'Sort by' ? 'sortBy' : label.toLowerCase();
-    console.log(label2);
+    // console.log(label2);
 
   // console.log(label.toLowerCase().replaceAll(' ', ''));
   // console.log(urlParams.get(label.toLowerCase()));
   // console.log(label);
   // console.log(urlParams.get(`${label2}`));
   for (let i = 0; i<=options.length;i++) {
-    console.log(options);
+    // console.log(options);
   }
 
   return (
