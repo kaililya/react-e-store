@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "./static/css/main.774ac341.css",
-    "main.js": "./static/js/main.2c14bc88.js",
+    "main.js": "./static/js/main.574621ac.js",
     "static/js/787.ae3507f6.chunk.js": "./static/js/787.ae3507f6.chunk.js",
     "static/media/nike-shoes-1.jpg": "./static/media/nike-shoes-1.7ddaf894b6a922bb33b7.jpg",
     "static/media/usa-flag.png": "./static/media/usa-flag.51479dfbc021f3a62b5a.png",
     "index.html": "./index.html",
     "main.774ac341.css.map": "./static/css/main.774ac341.css.map",
-    "main.2c14bc88.js.map": "./static/js/main.2c14bc88.js.map",
+    "main.574621ac.js.map": "./static/js/main.574621ac.js.map",
     "787.ae3507f6.chunk.js.map": "./static/js/787.ae3507f6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.774ac341.css",
-    "static/js/main.2c14bc88.js"
+    "static/js/main.574621ac.js"
   ]
 }
