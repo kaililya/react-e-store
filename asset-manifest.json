@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "./static/css/main.774ac341.css",
-    "main.js": "./static/js/main.574621ac.js",
-    "static/js/787.ae3507f6.chunk.js": "./static/js/787.ae3507f6.chunk.js",
-    "static/media/nike-shoes-1.jpg": "./static/media/nike-shoes-1.7ddaf894b6a922bb33b7.jpg",
-    "static/media/usa-flag.png": "./static/media/usa-flag.51479dfbc021f3a62b5a.png",
-    "index.html": "./index.html",
-    "main.774ac341.css.map": "./static/css/main.774ac341.css.map",
-    "main.574621ac.js.map": "./static/js/main.574621ac.js.map",
-    "787.ae3507f6.chunk.js.map": "./static/js/787.ae3507f6.chunk.js.map"
+    "main.css": "/react-e-store/static/css/main.9b051156.css",
+    "main.js": "/react-e-store/static/js/main.e16e0d67.js",
+    "static/js/787.ae3507f6.chunk.js": "/react-e-store/static/js/787.ae3507f6.chunk.js",
+    "static/media/nike-shoes-1.jpg": "/react-e-store/static/media/nike-shoes-1.7ddaf894b6a922bb33b7.jpg",
+    "static/media/usa-flag.png": "/react-e-store/static/media/usa-flag.51479dfbc021f3a62b5a.png",
+    "index.html": "/react-e-store/index.html",
+    "main.9b051156.css.map": "/react-e-store/static/css/main.9b051156.css.map",
+    "main.e16e0d67.js.map": "/react-e-store/static/js/main.e16e0d67.js.map",
+    "787.ae3507f6.chunk.js.map": "/react-e-store/static/js/787.ae3507f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.774ac341.css",
-    "static/js/main.574621ac.js"
+    "static/css/main.9b051156.css",
+    "static/js/main.e16e0d67.js"
   ]
 }
